@@ -7,17 +7,16 @@ import Social_icons from '../components/Social_icons.astro'
 import Gmail from '../icons/Social/Gmail.astro'
 import Section from '../components/Section.astro';
 import Section_tecno from '../components/Section_tecno.astro';
-import Tecnologias from '../components/Tecnologias.astro';
+import Technologies from '../components/Technologies.astro';
 import Code from '../icons/Titulos/Code.astro'
-import Proyectos from '../components/Proyectos.astro'
-import Certificados from '../components/Certificados.astro'
-import Sobre_mi from '../components/Sobre_mi.astro'
+import Projects from '../components/Projects.astro'
+import Certificates from '../components/Certificates.astro'
+import About_me from '../components/About_me.astro'
 import Cert_icon from '../icons/Titulos/Cert_icon.astro'
 import Me_icons from '../icons/Titulos/Me_icon.astro'
-import Section_sobremi from '../components/Section_sobremi.astro'
+import Section_aboutme from '../components/Section_aboutme.astro'
 import Footer from '../components/Footer.astro'
-import Discord from '../icons/Social/Discord.astro'
-import Section_certificados from '../components/Section_certificados.astro';
+import Section_certificates from '../components/Section_certificates.astro';
 ---
 
 <Layout title="Personal Portfolio"
@@ -25,56 +24,51 @@ description="My goal is to grow as a developer by exploring new technologies, re
 	<main class="px-4">
 		<Section>
 			<div class="flex ">
-				<img class="rounded-full w-[180px] h-[180px] mb-4 object-cover" 
+				<img class="rounded-full w-[200px] h-[200px] mb-4 object-cover" 
 				src="/public/profile_picture.webp" alt="Diana"
 			/> 
 				<div class="flex flex-col ml-[25px]">
-					<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold gap-x-5 pb-6 lg:pb-10">
-					I'm Diana 
-					<a href="https://www.linkedin.com/in/diana-camz" target="_blank" rel="noopener"> 
-						<div class="flex   hover:scale-110 transition">
-							<Badge> Open To Work </Badge>
-						</div>
-					<a/>
+					<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold gap-x-5">
+					I'm Diana
 					</h1>
+						<div class="flex items-center gap-4">
+							<div class="flex items-center">
+								<Badge> Open To Work </Badge>
+							</div>
+						<div class="flex gap-x-6 mt-3 flex-wrap">
+								<Linkedin class="size-6 hover:scale-110 transition"/>
+								<Github class="size-6 hover:scale-110 transition"/>
+						</div>
+						</div>
+
 				</div>
 			</div>
 		<h2 class="text-xl lg:text-2xl opacity-80 text-pretty max-w-{700px}">
 			<span class="text-blue-300">Junior Fullstack Developer.</span><br> I'm from Colima, Mexico, and I have focused on mobile application development. My goal is to grow as a developer by exploring new technologies, refining my problem-solving abilities, and applying best practices to create meaningful and efficient solutions.
 		</h2>
-		<nav class="flex gap-x-20 mt-6 flex-wrap justify-center">
-			<Social_icons href="https://www.linkedin.com/in/diana-camz">
-				<Linkedin class="size-4 md:size-6"/>
-			</Social_icons>
-			<Social_icons href="https://github.com/Pietro923">
-				<Github class="size-4 md:size-6"/>
-			</Social_icons>
-			<Social_icons href="mailto:dcampos@gmail.com">
-				<Gmail class="size-4 md:size-6"/>
-			</Social_icons>
-		</nav>
+		
 		</Section>
 		<Section_tecno id="technologies">
-			<Tecnologias/>
+			<Technologies/>
 		</Section_tecno>
 		<Section id="projects">
 			<div class="flex justify-center">
 				<h2 class="text-4xl font-semibold pb-10 flex gap-x-3 items-center text-center mb-4"> <Code class="size-8 "/>Projects </h2>
 			</div>
-			<Proyectos/>
+			<Projects/>
 		</Section>
-		<Section_certificados id="certificates">
+		<Section_certificates id="certificates">
 			<div class="flex justify-center">
 				<h2 class="text-4xl font-semibold pb-10 flex gap-x-3 items-center text-center mb-4"> <Cert_icon class="size-8 "/>Certificates </h2>
 			</div>
-			<Certificados/>
-		</Section_certificados>
-		<Section_sobremi id="about_me">
+			<Certificates/>
+		</Section_certificates>
+		<Section_aboutme id="about_me">
 			<div class="flex justify-center">
 				<h2 class="text-4xl font-semibold pb-10 flex gap-x-3 items-center text-center mb-4"> <Me_icons class="size-8 "/>About me </h2>
 			</div>
-			<Sobre_mi/>
-		</Section_sobremi>
+			<About_me/>
+		</Section_aboutme>
 		<Footer/>
 	</main>
 	
