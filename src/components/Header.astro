@@ -1,9 +1,90 @@
-<header class="flex justify-center items-center mx-auto py-5 sticky top-0 w-full xl:w-[1120px] z-10">
-    <nav class="flex flex-wrap justify-center items-center px-3 text-sm font-medium rounded-full bg-[#171717]/70">
-        <a class="hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#top">Home</a>
-        <a class="hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Technologies">Technologies</a>
-        <a class="hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Certificates">Certificates</a>
-        <a class="hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Projects">Projects</a>
-        <a class="hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#About_me">About me</a>
+<header id="main-header" class="header-default justify-center mx-auto py-5 top-0 w-full xl:w-[1120px] z-10" >
+    <nav id="navbar" class="flex flex-wrap justify-center items-center px-3 text-sm font-medium">
+        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#top">Home</a>
+        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Technologies">Technologies</a>
+        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Projects">Projects</a>
+        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Certificates">Certificates</a>
+        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#About_me">About me</a>
     </nav>
 </header>
+<style>
+  .header-default {
+    @apply w-full fixed top-0 flex items-center p-4 transition-all duration-300;
+  }
+
+  .header-sidebar {
+    @apply fixed w-48 flex flex-col items-center transition-all duration-300;
+  }
+
+  .nav-side{
+    @apply flex flex-col items-center gap-6;
+  }
+
+  .a-link {
+    @apply transition-opacity duration-500 ease-in-out;
+ }
+
+    .a-normal {
+    @apply opacity-100;
+ }
+
+    .a-fade {
+    @apply opacity-70;
+    }
+</style>
+<script>
+  if (typeof window !== "undefined") {
+    const header = document.getElementById("main-header");
+    const navbar = document.getElementById("navbar");
+    const links = navbar?.querySelectorAll("a");
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+            
+        //   if (window.scrollY > 40) {
+        //     header?.classList.add("header-sidebar");
+        //     header?.classList.remove("header-default");
+        //     links?.forEach(link => {
+        //         link.classList.remove("a-normal");
+        //         link.classList.add("a-fade");
+        //     });
+        //   } else {
+        //     header?.classList.add("header-default");
+        //     header?.classList.remove("header-sidebar");
+        //     links?.forEach(link => {
+        //         link.classList.add("a-normal");
+        //         link.classList.remove("a-fade");
+        //     });
+        //   }
+
+             if (window.scrollY > 40) {
+        // Fade OUT primero
+        links.forEach(link => link.classList.add("opacity-0"));
+
+        // Después de que termine el fade, cambio de layout + fade IN
+        setTimeout(() => {
+          header.classList.add("header-sidebar");
+          header.classList.remove("header-default");
+
+          links.forEach(link => link.classList.remove("opacity-0"));
+          links.forEach(link => link.classList.add("opacity-100 border"));
+        }, 500); // duración del fade (igual a duration-500)
+      } else {
+        links.forEach(link => link.classList.add("opacity-0"));
+
+        setTimeout(() => {
+          header.classList.add("header-default");
+          header.classList.remove("header-sidebar");
+
+          links.forEach(link => link.classList.remove("opacity-0"));
+          links.forEach(link => link.classList.add("opacity-100"));
+        }, 500);
+      }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+</script>
