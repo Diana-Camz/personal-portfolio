@@ -1,90 +1,100 @@
-<header id="main-header" class="header-default justify-center mx-auto py-5 top-0 w-full xl:w-[1120px] z-10" >
-    <nav id="navbar" class="flex flex-wrap justify-center items-center px-3 text-sm font-medium">
-        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#top">Home</a>
-        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Technologies">Technologies</a>
-        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Projects">Projects</a>
-        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Certificates">Certificates</a>
-        <a class="a-link hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#About_me">About me</a>
-    </nav>
+<header id="main-header" class="header-default justify-center mx-auto py-5 top-0 w-full xl:w-[1120px] z-10">
+  <nav id="navbar" class="flex flex-wrap justify-center items-center px-3 text-sm font-medium">
+    <a class="a-link is-shown hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#top">Home</a>
+    <a class="a-link is-shown hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Technologies">Technologies</a>
+    <a class="a-link is-shown hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Projects">Projects</a>
+    <a class="a-link is-shown hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#Certificates">Certificates</a>
+    <a class="a-link is-shown hover:bg-white/10 rounded-full px-3 py-1 transition text-base md:text-md" href="#About_me">About me</a>
+  </nav>
 </header>
 <style>
-  .header-default {
-    @apply w-full fixed top-0 flex items-center p-4 transition-all duration-300;
+.header-default { /* nav horizontal */
+    width: 100%; 
+    position: fixed; 
+    top: 0; 
+    display: flex; 
+    align-items: center;
+    padding: 1rem; 
+    transition: all 100ms;
   }
-
-  .header-sidebar {
-    @apply fixed w-48 flex flex-col items-center transition-all duration-300;
+  .header-sidebar { /* nav sidebar */
+    position: fixed; 
+    width: 12rem; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    transition: all 300ms;
   }
-
-  .nav-side{
-    @apply flex flex-col items-center gap-6;
+  .nav-side {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1.5rem;
   }
 
   .a-link {
-    @apply transition-opacity duration-500 ease-in-out;
- }
+    transition: opacity 900ms ease-in-out;
+    opacity: 1;
+  }
+  .is-hidden { opacity: 0; }
+  .is-shown  { opacity: 1; }
 
-    .a-normal {
-    @apply opacity-100;
- }
-
-    .a-fade {
-    @apply opacity-70;
-    }
+  .header-default .a-link { color: white; }
+  .header-sidebar .a-link { color: white; } 
 </style>
 <script>
-  if (typeof window !== "undefined") {
-    const header = document.getElementById("main-header");
-    const navbar = document.getElementById("navbar");
-    const links = navbar?.querySelectorAll("a");
-    let ticking = false;
-    window.addEventListener("scroll", () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-            
-        //   if (window.scrollY > 40) {
-        //     header?.classList.add("header-sidebar");
-        //     header?.classList.remove("header-default");
-        //     links?.forEach(link => {
-        //         link.classList.remove("a-normal");
-        //         link.classList.add("a-fade");
-        //     });
-        //   } else {
-        //     header?.classList.add("header-default");
-        //     header?.classList.remove("header-sidebar");
-        //     links?.forEach(link => {
-        //         link.classList.add("a-normal");
-        //         link.classList.remove("a-fade");
-        //     });
-        //   }
+(function () {
+    const header  = document.getElementById('main-header');
+    const navbar  = document.getElementById('navbar');
+    const links   = Array.from(navbar.querySelectorAll('.a-link'));
 
-             if (window.scrollY > 40) {
-        // Fade OUT primero
-        links.forEach(link => link.classList.add("opacity-0"));
+    const THRESHOLD = 40;         
+    let isSidebar   = false;       
+    let isAnimating = false;     
 
-        // Después de que termine el fade, cambio de layout + fade IN
-        setTimeout(() => {
-          header.classList.add("header-sidebar");
-          header.classList.remove("header-default");
+    function applyNavLayout(toSidebar) {
+      navbar.classList.toggle('nav-side', toSidebar);
+      header.classList.toggle('header-sidebar', toSidebar);
+      header.classList.toggle('header-default', !toSidebar);
+    }
 
-          links.forEach(link => link.classList.remove("opacity-0"));
-          links.forEach(link => link.classList.add("opacity-100 border"));
-        }, 500); // duración del fade (igual a duration-500)
-      } else {
-        links.forEach(link => link.classList.add("opacity-0"));
+    function swapLayout(toSidebar) {
+      if (isAnimating || toSidebar === isSidebar) return;
+      isAnimating = true;
 
-        setTimeout(() => {
-          header.classList.add("header-default");
-          header.classList.remove("header-sidebar");
+      links.forEach(a => { a.classList.remove('is-shown'); a.classList.add('is-hidden'); });
 
-          links.forEach(link => link.classList.remove("opacity-0"));
-          links.forEach(link => link.classList.add("opacity-100"));
-        }, 500);
-      }
-          ticking = false;
+      const onFadeOutEnd = () => {
+        links[0].removeEventListener('transitionend', onFadeOutEnd);
+
+        applyNavLayout(toSidebar);
+
+        requestAnimationFrame(() => {
+          links.forEach(a => { a.classList.remove('is-hidden'); a.classList.add('is-shown'); });
+
+          const onFadeInEnd = () => {
+            links[0].removeEventListener('transitionend', onFadeInEnd);
+            isAnimating = false;
+            isSidebar = toSidebar;
+          };
+          links[0].addEventListener('transitionend', onFadeInEnd, { once: true });
         });
-        ticking = true;
-      }
+      };
+      links[0].addEventListener('transitionend', onFadeOutEnd, { once: true });
+    }
+
+    const startSidebar = (window.scrollY || 0) > THRESHOLD;
+    applyNavLayout(startSidebar);
+    isSidebar = startSidebar;
+
+    window.addEventListener('scroll', () => {
+      const toSidebar = (window.scrollY || 0) > THRESHOLD;
+      if (toSidebar !== isSidebar) swapLayout(toSidebar);
     }, { passive: true });
-  }
+  })();
+
+/*
+  This section controls the transition between the two navigation layouts. The logic ensures that every time the scroll crosses a certain threshold, the navigation links fade out, the layout switches smoothly, and then the links fade back in.
+  It was necessary to use plain CSS classes cause Tailwind’s build process removes unused classes by default. By defining small custom classes in plain CSS, we ensure that the transitions (fade in/out) always work consistently
+*/
 </script>
