@@ -19,13 +19,13 @@ import Section_certificates from '../components/Section_certificates.astro';
 
 <Layout title="Personal Portfolio"
 description="My goal is to grow as a developer by exploring new technologies, refining my problem-solving abilities, and applying best practices to create meaningful and efficient solutions.">
-	<main class="px-4">
+	<main class="w-[100%] px-4">
 		<Section>
-			<div class="flex ">
-				<img class="rounded-full w-[200px] h-[200px] mb-4 object-cover" 
+			<div class="w-full flex-col sm:flex-row flex sm:items-center sm:justify-start">
+				<img class="rounded-full sm:w-[200px] sm:h-[200px] mb-4 object-cover w-[100px] h-[100px] mx-auto sm:mx-0" 
 				src="/profile_picture.webp" alt="Diana"
-			/> 
-				<div class="flex flex-col ml-[25px]">
+				/> 
+				<div class="flex flex-col sm:ml-[25px] items-center sm:items-start text-center sm:text-left">
 					<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold gap-x-5">
 					I'm Diana
 					</h1>
@@ -41,7 +41,7 @@ description="My goal is to grow as a developer by exploring new technologies, re
 
 				</div>
 			</div>
-			<h2 class="text-xl lg:text-2xl opacity-80 text-pretty max-w-{700px}">
+			<h2 class="text-xl lg:text-2xl opacity-80 text-pretty max-w-{700px} text-center sm:text-left mt-6 sm:mt-0">
 				<span class="text-blue-300">Junior Fullstack Developer.</span><br> I'm from Colima, Mexico, and I have focused on mobile application development. My goal is to grow as a developer by exploring new technologies, refining my problem-solving abilities, and applying best practices to create meaningful and efficient solutions.
 			</h2>
 		</Section>
