@@ -4,6 +4,7 @@ import Badge from '../components/Badge.astro';
 import Linkedin from '../icons/Social/Linkedin.astro'
 import Github from '../icons/Social/Github.astro'
 import Section from '../components/Section.astro';
+import Section_projects from '../components/Section_projects.astro';
 import Section_tecno from '../components/Section_tecno.astro';
 import Technologies from '../components/Technologies.astro';
 import Code from '../icons/Titulos/Code.astro'
@@ -34,8 +35,8 @@ description="My goal is to grow as a developer by exploring new technologies, re
 								<Badge> Open To Work </Badge>
 							</div>
 						<div class="flex gap-x-6 mt-3 flex-wrap">
-								<Linkedin class="size-6 hover:scale-110 transition"/>
-								<Github class="size-6 hover:scale-110 transition"/>
+								<Linkedin class="size-6 hover:scale-125 transition cursor-pointer"/>
+								<Github class="size-6 hover:scale-125 transition cursor-pointer"/>
 						</div>
 						</div>
 
@@ -48,12 +49,12 @@ description="My goal is to grow as a developer by exploring new technologies, re
 		<Section_tecno id="Technologies">
 			<Technologies/>
 		</Section_tecno>
-		<Section id="Projects">
+		<Section_projects id="Projects">
 			<div class="flex justify-center">
 				<h2 class="text-4xl font-semibold pb-10 flex gap-x-3 items-center text-center mb-4"> <Code class="size-8 "/>Projects </h2>
 			</div>
 			<Projects/>
-		</Section>
+		</Section_projects>
 		<Section_certificates id="Certificates">
 			<div class="flex justify-center">
 				<h2 class="text-4xl font-semibold pb-10 flex gap-x-3 items-center text-center mb-4"> <Cert_icon class="size-8 "/>Certificates </h2>

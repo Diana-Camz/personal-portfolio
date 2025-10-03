@@ -1,6 +1,6 @@
-<header id="main-header" class="header-default justify-center mx-auto py-5 top-0 w-full xl:w-[1120px] z-10">
+<header id="main-header" class="header-default justify-center mx-auto py-5 top-0 w-full xl:w-[1120px] z-10 border">
   <div class="flex lg:hidden items-center w-full  justify-end border">
-     <nav id="mobile-menu" class="md:hidden hidden px-3 pt-3 flex flex-col" aria-label="Mobile">
+     <nav id="mobile-menu" class="md:hidden hidden px-3 pt-3 flex flex-col bg-black" aria-label="Mobile">
       <a class="a-link is-shown rounded-xl px-3 py-2 hover:bg-white/10" href="#top">Home</a>
       <a class="a-link is-shown rounded-xl px-3 py-2 hover:bg-white/10" href="#Technologies">Technologies</a>
       <a class="a-link is-shown rounded-xl px-3 py-2 hover:bg-white/10" href="#Projects">Projects</a>
@@ -8,7 +8,7 @@
       <a class="a-link is-shown rounded-xl px-3 py-2 hover:bg-white/10" href="#About_me">About me</a>
     </nav>
     <button id="menu-toggle"
-            class=" inline-flex items-center rounded-xl p-2 w-25 bg-[#3e3e3e] focus:outline-none focus:ring-2 focus:ring-white/50"
+            class=" inline-flex items-center rounded-xl p-2 w-25 bg-[#3e3e3e] focus:outline-none"
             aria-controls="mobile-menu"
             aria-expanded="false"
             aria-label="Open main menu">
@@ -78,7 +78,7 @@
     let isSidebar   = false;       
     let isAnimating = false;
     
-   /* function closeMobileMenu() {
+ function closeMobileMenu() {
       mobileMenu.classList.add('hidden');
       btnToggle.setAttribute('aria-expanded', 'false');
       iconOpen.classList.remove('hidden');
@@ -107,7 +107,7 @@
       if (e.matches) closeMobileMenu(); // estamos en escritorio
     });
 
-    btnToggle.addEventListener('click', toggleMobileMenu);*/
+    btnToggle.addEventListener('click', toggleMobileMenu);
 
     function applyNavLayout(toSidebar) {
       navbar.classList.toggle('nav-side', toSidebar);
