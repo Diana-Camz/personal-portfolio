@@ -2,7 +2,6 @@
 import Js from "../icons/Technologies/Languages/Js.astro";
 import React from "../icons/Technologies/frameworks/React.astro";
 import Social_icons from "./Social_icons.astro";
-import Github from "../icons/Social/Github.astro";
 import Java from "../icons/Technologies/Languages/Java.astro";
 import Spring from "../icons/Technologies/frameworks/Spring.astro";
 import Ts from "../icons/Technologies/Languages/Ts.astro";
@@ -12,37 +11,30 @@ import Firebase from "../icons/Technologies/Databases/Firebase.astro";
 const TAGS = {
   Java: {
     name: "Java",
-    class: "text-white",
     icon: Java,
   },
   Ts: {
     name: "TypeScript",
-    class: "text-white",
     icon: Ts,
   },
   Spring: {
     name: "Spring Boot",
-    class: "text-white",
     icon: Spring,
   },
   Js: {
     name: "Js",
-    class: "text-white",
     icon: Js,
   },
   React: {
     name: "React Native",
-    class: "text-white",
     icon: React,
   },
     Mysql: {
     name: "Mysql",
-    class: "text-white",
     icon: Mysql,
   },
     Firebase: {
     name: "Firebase",
-    class: "text-white",
     icon: Firebase,
   },
 };
@@ -75,22 +67,22 @@ const PROJECTS = [
 ];
 ---
 
-<div class="flex flex-col gap-y-16">
-  {PROJECTS.map(({ image, title, description, tags, link, github }) => (
-    <article class="flex flex-col md:flex-row md:space-x-8 space-y-8 md:space-y-0">
-      <div class="w-full md:w-1/2 flex items-center group justify-center">
-        <div class="relative flex flex-col items-center transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl sm:rounded-xl lg:border lg:border-gray-800 group-hover:shadow-2xl">
-          <img alt="Project Preview" class="object-cover object-top w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image} />
+<div class="w-full flex flex-col gap-y-16">
+  {PROJECTS.map(({ image, title, description, tags, github }) => (
+    <article class="flex flex-col xl:flex-row xl:space-x-8 justify-center items-center space-y-8 xl:space-y-0">
+      <div class="h-full w-50 flex items-center justify-center group">
+        <div class="flex flex-col items-center shadow-xl overflow-hidden rounded-xl transition duration-500 ease-in-out group-hover:shadow-2xl">
+          <img alt="Project Preview" class="w-60 h-60 object-cover object-top transform transition-transform duration-500 group-hover:scale-110" loading="lazy" src={image} />
         </div>
       </div>
 
-      <div class="w-full md:w-1/2 flex flex-col justify-center">
-        <h3 class="text-2xl font-bold mb-2 ">{title}</h3>
-        <div class="flex flex-wrap mt-2">
+      <div class="md:w-[80%] xl:w-1/2 flex flex-col justify-center text-center xl:text-left">
+        <h3 class="text-2xl font-bold mb-2">{title}</h3>
+        <div class="flex flex-wrap mt-2 justify-center xl:justify-start">
           <ul class="flex flex-row mb-2 gap-x-2">
             {tags.map((tag) => (
               <li = {tag.name}>
-                <span class={`flex gap-x-2 rounded-full border border-white/10 text-xs ${tag.class} py-1 px-2`}>
+                <span class={`flex gap-x-2 rounded-full border border-white/10 text-xs text-white py-1 px-2`}>
                   <tag.icon class="size-4" />
                   {tag.name}
                 </span>
@@ -101,10 +93,9 @@ const PROJECTS = [
 
         <div class="mt-2 text-lg mb-4]">{description}</div>
 
-        <footer class="flex items-end justify-start mt-4 gap-x-4">
+        <footer class="flex items-center justify-center xl:justify-start mt-4 gap-x-4">
           {github && (
             <Social_icons href={github}>
-              <Github class="size-6" />
               Code
             </Social_icons>
           )}
