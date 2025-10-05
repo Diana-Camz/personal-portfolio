@@ -16,4 +16,4 @@ The site is developed using **Astro**, styled with **Tailwind CSS**, and enhance
 
 | Preview|
 |----|
-| <img width="930" height="671" alt="Screenshot from 2025-10-04 00-18-10" src="https://github.com/user-attachments/assets/9603feb4-131f-4c6d-9610-f97cc2fd3b0d" /> |
+| <img width="930" height="671" alt="Screenshot from 2025-10-04 00-18-10" src="https://github.com/user-attachments/assets/5801d81c-2af9-483f-8440-c66bcd5b95f9" /> |
