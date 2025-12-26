@@ -1,8 +1,10 @@
 ---
 import Js from "../icons/Technologies/Languages/Js.astro";
 import React from "../icons/Technologies/frameworks/React.astro";
+import NextJs from "../icons/Technologies/frameworks/NextJs.astro";
 import Social_icons from "./Social_icons.astro";
 import Java from "../icons/Technologies/Languages/Java.astro";
+import Tailwind from "../icons/Technologies/Tools/Tailwind.astro";
 import Spring from "../icons/Technologies/frameworks/Spring.astro";
 import Ts from "../icons/Technologies/Languages/Ts.astro";
 import Mysql from "../icons/Technologies/Databases/Mysql.astro";
@@ -37,21 +39,37 @@ const TAGS = {
     name: "Firebase",
     icon: Firebase,
   },
+    NextJs: {
+    name: "Next.js",
+    icon: NextJs,
+  },
+    Tailwind: {
+    name: "Tailwind CSS",
+    icon: Tailwind,
+  },
 };
 
 const PROJECTS = [
   {
     title: "Interestelar (Internal Project – MagmaLabs)",
     description: "Mobile application built with React Native and Expo that integrates the Loyverse API for product and sales management. Developed with TypeScript and Firebase (Phone Authentication), the app provides a seamless and secure user experience for managing business operations.",
-    link: "#",
-    github: "",
+    //link: "#",
+    //github: "",
     image: "/projects/interestelar.png",
     tags: [ TAGS.Ts, TAGS.React, TAGS.Firebase],
   },
-    {
+  {
+    title: "Enercom - Landing Page",
+    description: "Page built with Next.js, Tailwind CSS, and shadcn/ui. Includes a secure contact form integrated with Resend for email delivery and Cloudflare Turnstile for spam prevention.",
+    link: "https://enercom-landing.netlify.app/",
+    github: "https://github.com/Diana-Camz/enercom-landing-page",
+    image: "/projects/enercom.png",
+    tags: [ TAGS.NextJs, TAGS.React, TAGS.Tailwind],
+  },
+  {
     title: "Finance Tracker - Mobile Application",
     description: "Mobile application built with React Native and Expo, designed to help you manage your money efficiently. It uses MySql as the database and JWT-based authentication to ensure secure access, allowing users to securely record income and expenses, visualize statistics, and set budgets to improve financial control.",
-    link: "#",
+    //link: "#",
     github: "https://github.com/beatrizheav/FinanceTracker",
     image: "/projects/financetracker.png",
     tags: [ TAGS.Ts, TAGS.React, TAGS.Mysql],
@@ -59,7 +77,7 @@ const PROJECTS = [
   {
     title: "ForoHub - API REST",
     description: "REST API developed with Spring Boot that enables the creation and management of users and topics. Through JWT authentication, users can interact with the forum by performing operations such as creating, updating, and deleting topics, as well as retrieving specific information.",
-    link: "#",
+    //link: "#",
     github: "https://github.com/Diana-Camz/Challenge4-ONE-ForoHub",
     image: "/projects/forohub.webp",
     tags: [ TAGS.Java, TAGS.Spring, TAGS.Mysql],
@@ -68,7 +86,7 @@ const PROJECTS = [
 ---
 
 <div class="w-full flex flex-col gap-y-16">
-  {PROJECTS.map(({ image, title, description, tags, github }) => (
+  {PROJECTS.map(({ image, title, description, tags, github, link }) => (
     <article class="flex flex-col xl:flex-row xl:space-x-8 justify-center items-center space-y-8 xl:space-y-0">
       <div class="h-full w-50 flex items-center justify-center group">
         <div class="flex flex-col items-center shadow-xl overflow-hidden rounded-xl transition duration-500 ease-in-out group-hover:shadow-2xl">
@@ -82,8 +100,8 @@ const PROJECTS = [
           <ul class="flex flex-row mb-2 gap-x-2">
             {tags.map((tag) => (
               <li = {tag.name}>
-                <span class={`flex gap-x-2 rounded-full border border-white/10 text-xs text-white py-1 px-2`}>
-                  <tag.icon class="size-4" />
+                <span class={`flex gap-x-2 rounded-full border border-white/10 text-xs text-white py-1 px-2 items-center`}>
+                  <tag.icon class="size-6" />
                   {tag.name}
                 </span>
               </li>
@@ -97,6 +115,11 @@ const PROJECTS = [
           {github && (
             <Social_icons href={github}>
               Code
+            </Social_icons>
+          )}
+          {link && (
+            <Social_icons href={link}>
+              Link
             </Social_icons>
           )}
         </footer>
